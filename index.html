@@ -473,7 +473,8 @@
       <label>MENSAJE
         <textarea name="mensaje" rows="4"></textarea>
       </label>
-      <button type="submit" class="btn btn-solid" style="width:fit-content">ENVIAR CONSULTA POR WHATSAPP</button>
+      <button type="submit" class="btn btn-solid" style="width:fit-content">ENVIAR CONSULTA</button>
+      <p id="form-status" role="status" style="display:none;font-family:var(--mono);font-size:13px;color:var(--green);margin:0"></p>
     </form>
     <div class="contacto-info">
       <div>
@@ -541,6 +542,7 @@
   var TEL_HUMAN  = "+54 9 261 000-0000";        // TODO: como se muestra en pantalla
   var EMAIL      = "contacto@tierrafirme.com.ar"; // TODO: confirmar casilla real
   var WA_GREETING = "Hola, quisiera consultar por la subdivisión de un terreno en...";
+  var WEB3FORMS_KEY = "";                       // TODO: access key gratuita de https://web3forms.com (dejar vacío desactiva el envío por email)
   // ============================================================
 
   var waLink = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_GREETING);
@@ -554,15 +556,37 @@
     a.textContent = EMAIL;
   });
 
-  // El formulario arma un mensaje de WhatsApp con los datos cargados
+  // El formulario abre WhatsApp con los datos cargados y, en paralelo, manda una copia por email
   document.getElementById("form-contacto").addEventListener("submit", function (e) {
     e.preventDefault();
     var f = e.target;
+    var status = document.getElementById("form-status");
     var msg = "Hola, soy " + f.nombre.value + ".\n" +
       "Quisiera consultar por la subdivisión de un terreno en " + f.departamento.value + ".\n" +
       (f.mensaje.value ? f.mensaje.value + "\n" : "") +
       "Mis datos de contacto: " + f.telefono.value + " / " + f.email.value;
+
     window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+
+    if (WEB3FORMS_KEY) {
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "Nueva consulta desde el sitio de Tierra Firme",
+          name: f.nombre.value,
+          email: f.email.value,
+          telefono: f.telefono.value,
+          departamento: f.departamento.value,
+          mensaje: f.mensaje.value || "(sin mensaje)"
+        })
+      }).catch(function () {});
+    }
+
+    status.textContent = "¡Listo! Te abrimos WhatsApp para que confirmes el envío. También registramos tu consulta por email.";
+    status.style.display = "block";
+    f.reset();
   });
 </script>
 </body>
