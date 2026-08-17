@@ -41,7 +41,7 @@
   .wrap{max-width:1140px;margin:0 auto}
   .pad-x{padding-left:clamp(20px,4vw,48px);padding-right:clamp(20px,4vw,48px)}
 
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;margin:0 0 16px}
+  .kicker{font-family:var(--mono);font-size:14px;letter-spacing:0.1em;margin:0 0 16px}
   h2{font-family:var(--display);font-weight:800;letter-spacing:-0.035em;color:var(--green);font-size:clamp(26px,3.2vw,38px);margin:0 0 40px}
   .btn{display:inline-block;text-decoration:none;font-family:var(--mono);font-size:13.5px;letter-spacing:0.03em;padding:16px 28px;border:none;cursor:pointer}
   .btn-solid{background:var(--terra);color:var(--paper)}
@@ -53,13 +53,30 @@
   header{background:var(--green);padding:clamp(14px,2vw,20px) clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:sticky;top:0;z-index:50}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
   .brand-name{display:block;font-family:var(--display);font-weight:800;letter-spacing:-0.035em;font-size:19px;color:var(--paper)}
-  .brand-sub{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;color:var(--cream)}
+  .brand-sub{display:block;font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--cream)}
   nav{display:flex;gap:clamp(14px,2vw,28px);flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;letter-spacing:0.02em}
   nav a{color:var(--cream);text-decoration:none}
   nav a:hover{color:var(--paper);text-decoration:underline}
   @keyframes drawLogo{from{stroke-dashoffset:340}to{stroke-dashoffset:0}}
   .logo-path{stroke-dasharray:340;animation:drawLogo 1.4s ease-out forwards}
   @media (prefers-reduced-motion: reduce){.logo-path{animation:none;stroke-dashoffset:0}}
+
+  .nav-toggle{display:none;flex:none;width:36px;height:36px;padding:0;background:none;border:none;cursor:pointer;position:relative}
+  .nav-toggle .bar{position:absolute;left:6px;right:6px;height:2px;background:var(--paper);transition:transform .2s ease,opacity .2s ease}
+  .nav-toggle .bar:nth-child(1){top:12px}
+  .nav-toggle .bar:nth-child(2){top:18px}
+  .nav-toggle .bar:nth-child(3){top:24px}
+  .nav-toggle.open .bar:nth-child(1){top:18px;transform:rotate(45deg)}
+  .nav-toggle.open .bar:nth-child(2){opacity:0}
+  .nav-toggle.open .bar:nth-child(3){top:18px;transform:rotate(-45deg)}
+
+  @media (max-width:760px){
+    .nav-toggle{display:block}
+    nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--green-dark);padding:0 clamp(20px,4vw,48px);max-height:0;overflow:hidden;transition:max-height .25s ease}
+    nav.open{max-height:320px;padding-top:8px;padding-bottom:16px}
+    nav a{padding:13px 0;border-top:1px solid rgba(251,251,254,0.15)}
+    nav a:first-child{border-top:none}
+  }
 
   /* HERO */
   .hero{padding-top:clamp(56px,10vw,120px);padding-bottom:clamp(40px,6vw,72px)}
@@ -72,7 +89,7 @@
   .hero-stats .num{font-family:var(--mono);font-size:24px;color:var(--green);margin:0 0 4px}
   .hero-stats .lbl{font-size:14px;color:var(--muted);margin:0}
   .para-quien{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:32px}
-  .para-quien-label{font-family:var(--mono);font-size:11.5px;letter-spacing:0.08em;color:var(--muted);margin:0;flex:none}
+  .para-quien-label{font-family:var(--mono);font-size:11.5px;letter-spacing:0.08em;color:var(--muted);margin:0;flex:1 1 220px}
   .tag-row{display:flex;gap:10px;flex-wrap:wrap}
   .tag{font-family:var(--mono);font-size:12px;letter-spacing:0.02em;color:var(--green);border:1.5px solid var(--line);padding:7px 14px}
 
@@ -88,7 +105,7 @@
   .enfoque-body p{font-size:clamp(17px,1.3vw,19px);margin:0}
 
   /* SITUACIONES */
-  .situaciones{padding-top:clamp(48px,8vw,80px);padding-bottom:clamp(48px,8vw,80px)}
+  .situaciones{padding-top:clamp(48px,8vw,80px);padding-bottom:clamp(48px,8vw,50px)}
   .situaciones-lead{font-size:clamp(16px,1.2vw,18px);color:var(--muted);max-width:60ch;margin:0 0 40px}
   .sit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:var(--line)}
   .sit{background:var(--paper);padding:26px 22px;display:flex;flex-direction:column;gap:10px}
@@ -97,20 +114,19 @@
   .situaciones-cta{margin-top:36px}
 
   /* SERVICIOS */
-  .servicios{padding-top:clamp(56px,9vw,96px);padding-bottom:clamp(56px,9vw,96px)}
+  .servicios{padding-top:clamp(56px,9vw,50px);padding-bottom:clamp(56px,9vw,50px)}
   .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:2px solid var(--line);border-left:2px solid var(--line)}
   .svc{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:28px 24px;display:flex;flex-direction:column;gap:10px}
   .svc h3{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;color:var(--green);font-size:18px;margin:8px 0 0}
   .svc p{font-size:15.5px;margin:0}
-
   /* COMO TRABAJAMOS */
-  .proceso{background:var(--green);padding-top:clamp(56px,9vw,96px);padding-bottom:clamp(56px,9vw,96px)}
+  .proceso{background:var(--green);padding-top:clamp(56px,9vw,50px);padding-bottom:clamp(56px,9vw,96px)}
   .proceso .kicker{color:var(--cream)}
   .proceso h2{color:var(--paper);margin-bottom:48px}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:2px solid rgba(251,251,254,0.25)}
   .step{padding:28px 24px 0;border-right:2px solid rgba(251,251,254,0.25)}
   .step .n{font-family:var(--mono);font-size:13px;color:var(--terra);margin:0 0 12px}
-  .step h3{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;color:var(--paper);font-size:18px;margin:0 0 10px;max-width:16ch}
+  .step h3{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;color:var(--paper);font-size:18px;margin:0 0 10px}
   .step p{font-size:15px;color:var(--cream);margin:0}
 
   /* IMAGEN */
@@ -191,7 +207,12 @@
       <span class="brand-sub">CONSULTORA EN DIVISIÓN DE SUELO</span>
     </span>
   </a>
-  <nav aria-label="Navegación principal">
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <nav aria-label="Navegación principal" id="primary-nav">
     <a href="#servicios">SERVICIOS</a>
     <a href="#como-trabajamos">CÓMO TRABAJAMOS</a>
     <a href="#equipo">EQUIPO</a>
@@ -202,7 +223,7 @@
 
 <!-- HERO -->
 <section id="top" class="hero pad-x wrap">
-  <p class="kicker" style="color:var(--terra);font-size:12.5px;margin-bottom:20px">CONSULTORA EN DIVISIÓN DE SUELO · MENDOZA</p>
+  <p class="kicker" style="color:var(--terra);font-size:14.5px;margin-bottom:20px">CONSULTORA EN DIVISIÓN DE SUELO · MENDOZA</p>
   <h1>Regularizar la situación de un terreno en Mendoza, sin perderte en el trámite.</h1>
   <p class="lead">De la posesión al título. Te acompañamos en todo el proceso</p>
   <div class="hero-ctas">
@@ -243,8 +264,8 @@
 </div>
 
 <!-- ENFOQUE -->
-<section class="enfoque pad-x">
-  <div class="wrap">
+<section class="enfoque">
+  <div class="wrap pad-x">
     <p class="kicker" style="color:var(--green)">NUESTRO ENFOQUE</p>
     <h2>Abordamos y resolvemos el problema de forma integral</h2>
     <div class="enfoque-body">
@@ -309,8 +330,8 @@
 </section>
 
 <!-- COMO TRABAJAMOS -->
-<section id="como-trabajamos" class="proceso pad-x">
-  <div class="wrap">
+<section id="como-trabajamos" class="proceso">
+  <div class="wrap pad-x">
     <p class="kicker">CÓMO TRABAJAMOS</p>
     <h2>Un proceso, tres pasos</h2>
     <div class="steps">
@@ -439,13 +460,13 @@
   <div class="contacto-cols">
     <form id="form-contacto">
       <label>NOMBRE
-        <input type="text" name="nombre" required autocomplete="name">
+        <input type="text" name="nombre" required maxlength="40" autocomplete="name">
       </label>
       <label>TELÉFONO / WHATSAPP
-        <input type="tel" name="telefono" required autocomplete="tel">
+        <input type="tel" name="telefono" required maxlength="40" autocomplete="tel">
       </label>
       <label>EMAIL
-        <input type="email" name="email" required autocomplete="email">
+        <input type="email" name="email" required maxlength="40" autocomplete="email">
       </label>
       <label>DEPARTAMENTO
         <select name="departamento" required>
@@ -471,7 +492,7 @@
         </select>
       </label>
       <label>MENSAJE
-        <textarea name="mensaje" rows="4"></textarea>
+        <textarea name="mensaje" rows="4" required maxlength="800"></textarea>
       </label>
       <button type="submit" class="btn btn-solid" style="width:fit-content">ENVIAR CONSULTA</button>
       <p id="form-status" role="status" style="display:none;font-family:var(--mono);font-size:13px;color:var(--green);margin:0"></p>
@@ -540,9 +561,9 @@
   // ============================================================
   var WA_NUMBER  = "542610000000";              // TODO: número real, formato 549261XXXXXXX (sin +, sin espacios)
   var TEL_HUMAN  = "+54 9 261 000-0000";        // TODO: como se muestra en pantalla
-  var EMAIL      = "contacto@tierrafirme.com.ar"; // TODO: confirmar casilla real
+  var EMAIL      = "matias17garrido@gmail.com";
   var WA_GREETING = "Hola, quisiera consultar por la subdivisión de un terreno en...";
-  var WEB3FORMS_KEY = "";                       // TODO: access key gratuita de https://web3forms.com (dejar vacío desactiva el envío por email)
+  var WEB3FORMS_KEY = "005e63c2-e781-40f7-835f-558ac353089d";
   // ============================================================
 
   var waLink = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_GREETING);
@@ -556,34 +577,78 @@
     a.textContent = EMAIL;
   });
 
+  // Menú hamburguesa (mobile)
+  var navToggle = document.getElementById("nav-toggle");
+  var primaryNav = document.getElementById("primary-nav");
+  function closeNav() {
+    primaryNav.classList.remove("open");
+    navToggle.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+  navToggle.addEventListener("click", function () {
+    var isOpen = primaryNav.classList.toggle("open");
+    navToggle.classList.toggle("open", isOpen);
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+  primaryNav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", closeNav);
+  });
+
   // El formulario abre WhatsApp con los datos cargados y, en paralelo, manda una copia por email
+  function normalizeField(str) {
+    return str.trim().replace(/\s+/g, " ");
+  }
+  function normalizeMensaje(str) {
+    return str.trim().replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
+  }
+
   document.getElementById("form-contacto").addEventListener("submit", function (e) {
     e.preventDefault();
     var f = e.target;
     var status = document.getElementById("form-status");
-    var msg = "Hola, soy " + f.nombre.value + ".\n" +
-      "Quisiera consultar por la subdivisión de un terreno en " + f.departamento.value + ".\n" +
-      (f.mensaje.value ? f.mensaje.value + "\n" : "") +
-      "Mis datos de contacto: " + f.telefono.value + " / " + f.email.value;
+
+    var nombre = normalizeField(f.nombre.value);
+    var telefono = normalizeField(f.telefono.value);
+    var email = normalizeField(f.email.value).toLowerCase();
+    var departamento = f.departamento.value;
+    var mensaje = normalizeMensaje(f.mensaje.value);
+
+    if (!nombre || !telefono || !email || !departamento || !mensaje) {
+      status.style.color = "var(--terra)";
+      status.textContent = "Completá todos los campos antes de enviar.";
+      status.style.display = "block";
+      return;
+    }
+
+    f.nombre.value = nombre;
+    f.telefono.value = telefono;
+    f.email.value = email;
+    f.mensaje.value = mensaje;
+
+    var msg = "Hola, soy " + nombre + ".\n" +
+      "Quisiera consultar por la subdivisión de un terreno en " + departamento + ".\n" +
+      mensaje + "\n" +
+      "Mis datos de contacto: " + telefono + " / " + email;
 
     window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
 
     if (WEB3FORMS_KEY) {
+      var fd = new FormData();
+      fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("subject", "Nueva consulta desde el sitio de Tierra Firme");
+      fd.append("name", nombre);
+      fd.append("email", email);
+      fd.append("telefono", telefono);
+      fd.append("departamento", departamento);
+      fd.append("mensaje", mensaje);
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: "Nueva consulta desde el sitio de Tierra Firme",
-          name: f.nombre.value,
-          email: f.email.value,
-          telefono: f.telefono.value,
-          departamento: f.departamento.value,
-          mensaje: f.mensaje.value || "(sin mensaje)"
-        })
+        headers: { Accept: "application/json" },
+        body: fd
       }).catch(function () {});
     }
 
+    status.style.color = "var(--green)";
     status.textContent = "¡Listo! Te abrimos WhatsApp para que confirmes el envío. También registramos tu consulta por email.";
     status.style.display = "block";
     f.reset();
