@@ -136,7 +136,7 @@
     {
       "@type": "Question",
       "name": "Tengo un boleto de compraventa viejo, ¿todavía puedo escriturar?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En la mayoría de los casos sí, aunque el camino depende de cuántos años pasaron, si el vendedor original sigue localizable y si hay sucesiones de por medio. Lo primero que hacemos es un informe de la situación dominial para saber exactamente que falta antes de armar el camino a la escritura." }
+      "acceptedAnswer": { "@type": "Answer", "text": "En la mayoría de los casos sí, aunque el camino depende de cuántos años pasaron, si el vendedor original sigue localizable y si hay sucesiones de por medio. Lo primero que hacemos es un informe de la situación dominial para saber exactamente qué falta antes de armar el camino a la escritura." }
     },
     {
       "@type": "Question",
@@ -159,6 +159,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://tierrafirmeconsultora.com.ar/#glosario",
+  "name": "Cómo se llama cada trámite de división de suelo en Mendoza",
+  "description": "Equivalencia entre la forma en que la gente describe su problema con un terreno y el nombre técnico del trámite que lo resuelve.",
+  "inLanguage": "es-AR",
+  "itemListOrder": "https://schema.org/ItemListUnordered",
+  "numberOfItems": 8,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Prescripción adquisitiva (usucapión)", "description": "Vivo hace treinta años en un terreno que no está a mi nombre." },
+    { "@type": "ListItem", "position": 2, "name": "Subdivisión parcelaria", "description": "Quiero dividir el terreno de mis padres entre los hermanos." },
+    { "@type": "ListItem", "position": 3, "name": "Escrituración de boleto de compraventa", "description": "Compré con boleto hace quince años y nunca escrituré." },
+    { "@type": "ListItem", "position": 4, "name": "Loteo", "description": "Quiero vender el campo en lotes." },
+    { "@type": "ListItem", "position": 5, "name": "Mensura", "description": "No sé cuánto mide realmente mi terreno." },
+    { "@type": "ListItem", "position": 6, "name": "Regularización dominial", "description": "El barrio se armó solo y nadie tiene papeles." },
+    { "@type": "ListItem", "position": 7, "name": "Sucesión e inscripción de declaratoria", "description": "Mi papá murió y el terreno sigue a su nombre." },
+    { "@type": "ListItem", "position": 8, "name": "Fraccionamiento", "description": "Quiero separar la casa de adelante de la de atrás." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Cómo regularizar y subdividir un terreno en Mendoza",
   "description": "El proceso que sigue Tierra Firme para llevar un terreno desde la consulta inicial hasta la inscripción registral.",
@@ -168,7 +190,7 @@
       "@type": "HowToStep",
       "position": 1,
       "name": "Consulta inicial, relevamiento documental y factibilidad",
-      "text": "Nos contás tu caso, relevamos la documentación existente y determinamos que tenés y que falta para avanzar."
+      "text": "Nos contás tu caso, relevamos la documentación existente y determinamos qué tenés y qué falta para avanzar."
     },
     {
       "@type": "HowToStep",
@@ -202,6 +224,9 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
+  /* el header es sticky: sin esto, los enlaces del menú dejan el título tapado */
+  section[id]{scroll-margin-top:104px}
+  @media (max-width:760px){section[id]{scroll-margin-top:150px}}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.6;text-wrap:pretty}
   ::selection{background:var(--terra);color:var(--paper)}
   a{color:var(--terra)}
@@ -287,6 +312,15 @@
   /* ZONAS */
   .zonas{padding-top:clamp(48px,8vw,80px);padding-bottom:clamp(48px,8vw,80px)}
   .zonas .situaciones-lead{margin-bottom:24px}
+
+  /* GLOSARIO */
+  .glosario{background:var(--cream);padding-top:clamp(48px,8vw,88px);padding-bottom:clamp(48px,8vw,88px)}
+  .glos-list{margin:0;border-top:2px solid var(--line)}
+  .glos{display:flex;gap:clamp(16px,3vw,40px);align-items:baseline;flex-wrap:wrap;padding:18px 4px;border-bottom:1px solid var(--line)}
+  .glos dt{flex:1 1 300px;font-size:16.5px;color:var(--ink);margin:0}
+  .glos dd{flex:1 1 240px;margin:0;font-family:var(--display);font-weight:800;letter-spacing:-0.02em;color:var(--green);font-size:16.5px}
+  .glos-alt{font-family:var(--mono);font-weight:400;letter-spacing:0;color:var(--muted);font-size:13.5px;white-space:nowrap}
+  .glos-nota{font-size:15px;color:var(--muted);max-width:68ch;margin:28px 0 0}
 
   /* SERVICIOS */
   .servicios{padding-top:clamp(56px,9vw,50px);padding-bottom:clamp(56px,9vw,50px)}
@@ -464,12 +498,12 @@
     <div class="sit">
       <svg viewBox="0 0 40 40" width="28" height="28" fill="none" aria-hidden="true"><path d="M10 4 H30 V28 L26 33 L22 28 L18 33 L14 28 L10 33 Z M14 12 H26 M14 19 H26" stroke="#A8562F" stroke-width="2.5" stroke-linecap="square"/></svg>
       <h3>Boleto de compraventa antiguo</h3>
-      <p>Compraste o heredaste con un boleto de compraventa de hace años y la escritura nunca se hizo. Evaluamos si se puede escriturar directamente o que pasos previos faltan.</p>
+      <p>Compraste o heredaste con un boleto de compraventa de hace años y la escritura nunca se hizo. Evaluamos si se puede escriturar directamente o qué pasos previos faltan.</p>
     </div>
     <div class="sit">
       <svg viewBox="0 0 40 40" width="28" height="28" fill="none" aria-hidden="true"><path d="M4 4 H36 V36 H4 Z" stroke="#A8562F" stroke-width="2.5" stroke-linecap="square"/><path d="M4 20 H36" stroke="#A8562F" stroke-width="2.5" stroke-linecap="square" stroke-dasharray="1 6"/></svg>
       <h3>Terreno sin subdivisiones</h3>
-      <p>El terreno figura como una sola parcela grande y necesitás dividirlo — para vender lotes, repartir entre herederos o para uso familiar. Analizamos que permite la normativa de tu departamento.</p>
+      <p>El terreno figura como una sola parcela grande y necesitás dividirlo — para vender lotes, repartir entre herederos o para uso familiar. Analizamos qué permite la normativa de tu departamento.</p>
     </div>
     <div class="sit">
       <svg viewBox="0 0 40 40" width="28" height="28" fill="none" aria-hidden="true"><path d="M20 4 V16 M20 16 L10 28 M20 16 L30 28 M10 28 V36 M30 28 V36" stroke="#A8562F" stroke-width="2.5" stroke-linecap="square"/></svg>
@@ -478,6 +512,50 @@
     </div>
   </div>
   <a href="https://wa.me/5492615790298?text=Hola%2C%20quisiera%20consultar%20por%20la%20subdivisi%C3%B3n%20de%20un%20terreno%20en..." class="btn btn-solid situaciones-cta" data-wa target="_blank" rel="noopener">CONTANOS TU CASO →</a>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario" class="glosario">
+  <div class="wrap pad-x">
+    <p class="kicker" style="color:var(--green)">TRADUCCIÓN</p>
+    <h2>¿Cómo se llama lo que necesitás?</h2>
+    <p class="situaciones-lead">No hace falta que sepas el nombre del trámite para consultarnos. Pero si querés ubicarte antes de escribir, esta es la traducción.</p>
+    <dl class="glos-list">
+      <div class="glos">
+        <dt>“Vivo hace treinta años en un terreno que no está a mi nombre”</dt>
+        <dd>Prescripción adquisitiva <span class="glos-alt">(usucapión)</span></dd>
+      </div>
+      <div class="glos">
+        <dt>“Quiero dividir el terreno de mis padres entre los hermanos”</dt>
+        <dd>Subdivisión parcelaria</dd>
+      </div>
+      <div class="glos">
+        <dt>“Compré con boleto hace quince años y nunca escrituré”</dt>
+        <dd>Escrituración de boleto de compraventa</dd>
+      </div>
+      <div class="glos">
+        <dt>“Quiero vender el campo en lotes”</dt>
+        <dd>Loteo</dd>
+      </div>
+      <div class="glos">
+        <dt>“No sé cuánto mide realmente mi terreno”</dt>
+        <dd>Mensura</dd>
+      </div>
+      <div class="glos">
+        <dt>“El barrio se armó solo y nadie tiene papeles”</dt>
+        <dd>Regularización dominial</dd>
+      </div>
+      <div class="glos">
+        <dt>“Mi papá murió y el terreno sigue a su nombre”</dt>
+        <dd>Sucesión e inscripción de declaratoria</dd>
+      </div>
+      <div class="glos">
+        <dt>“Quiero separar la casa de adelante de la de atrás”</dt>
+        <dd>Fraccionamiento</dd>
+      </div>
+    </dl>
+    <p class="glos-nota">Cada uno de estos caminos pasa por organismos distintos —la <a href="https://atm.mendoza.gov.ar/direcciones/direccion-general-de-catastro/" target="_blank" rel="noopener">Dirección General de Catastro</a> y la <a href="https://jusmendoza.gob.ar/direccion-de-registros-publicos-y-archivo-judicial-%C2%B7-inicio/" target="_blank" rel="noopener">Dirección de Registros Públicos</a>, entre otros— y por la ordenanza del municipio donde está el terreno. Nosotros coordinamos ese recorrido completo.</p>
+  </div>
 </section>
 
 <!-- SERVICIOS -->
@@ -513,7 +591,7 @@
       <div class="step">
         <p class="n">01</p>
         <h3>Consulta inicial, relevamiento documental y factibilidad</h3>
-        <p>Nos contás tu caso, relevamos la documentación existente y entendemos que tenés y que falta.</p>
+        <p>Nos contás tu caso, relevamos la documentación existente y entendemos qué tenés y qué falta.</p>
       </div>
       <div class="step">
         <p class="n">02</p>
@@ -633,7 +711,7 @@
       </details>
       <details>
         <summary>Tengo un boleto de compraventa viejo, ¿todavía puedo escriturar? <span class="sym" aria-hidden="true"></span></summary>
-        <p>En la mayoría de los casos sí, aunque el camino depende de cuántos años pasaron, si el vendedor original sigue localizable y si hay sucesiones de por medio. Lo primero que hacemos es un informe de la situación dominial para saber exactamente que falta antes de armar el camino a la escritura.</p>
+        <p>En la mayoría de los casos sí, aunque el camino depende de cuántos años pasaron, si el vendedor original sigue localizable y si hay sucesiones de por medio. Lo primero que hacemos es un informe de la situación dominial para saber exactamente qué falta antes de armar el camino a la escritura.</p>
       </details>
       <details>
         <summary>¿Gestionan sucesiones? <span class="sym" aria-hidden="true"></span></summary>
